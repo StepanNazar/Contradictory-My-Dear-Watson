@@ -1,0 +1,17 @@
+raw:
+  train_path: data/raw/train.csv
+  test_path: data/raw/test.csv
+  sample_submission_path: data/raw/sample_submission.csv
+
+processed:
+  train_split_path: data/processed/train_split.csv
+  val_split_path: data/processed/val_split.csv
+  kaggle_test_path: data/processed/kaggle_test.csv
+  validation_report_path: data/processed/data_validation.json
+  split_metadata_path: data/processed/split_metadata.json
+
+split:
+  strategy: stratified_split
+  stratify_by: label
+  test_size: 0.2
+  random_state: 42

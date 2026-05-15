@@ -98,7 +98,7 @@ ipython_config.py
 #   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
 #   This is especially recommended for binary packages to ensure reproducibility, and is more
 #   commonly ignored for libraries.
-# uv.lock
+# Keep uv.lock committed for reproducible team installs.
 
 # poetry
 #   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
@@ -209,6 +209,32 @@ tempCodeRunnerFile.py
 # PyPI configuration file
 .pypirc
 
+# Local secrets and machine-local DVC config
+.env
+.env.*
+!.env.example
+.dvc/config.local
+
+# Notebook and Python generated files
+.ipynb_checkpoints/
+__pycache__/
+.pytest_cache/
+
+# Project data and generated artifacts
+data/raw/*.csv
+data/processed/*.csv
+submissions/*.csv
+submissions/*.joblib
+submissions/*.json
+models/current/**
+mlruns/
+
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!submissions/.gitkeep
+!models/.gitkeep
+!models/current/.gitkeep
+
 # Marimo
 marimo/_static/
 marimo/_lsp/
@@ -216,3 +242,5 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+.idea
