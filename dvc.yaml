@@ -1,0 +1,26 @@
+stages:
+  validate_data:
+    cmd: uv run python scripts/validate_data.py --config configs/data_split.yaml
+    deps:
+      - configs/data_split.yaml
+      - data/raw/train.csv
+      - data/raw/test.csv
+      - data/raw/sample_submission.csv
+      - scripts/validate_data.py
+    outs:
+      - data/processed/data_validation.json
+
+  prepare_splits:
+    cmd: uv run python scripts/prepare_splits.py --config configs/data_split.yaml
+    deps:
+      - configs/data_split.yaml
+      - data/raw/train.csv
+      - data/raw/test.csv
+      - data/raw/sample_submission.csv
+      - scripts/prepare_splits.py
+      - data/processed/data_validation.json
+    outs:
+      - data/processed/train_split.csv
+      - data/processed/val_split.csv
+      - data/processed/kaggle_test.csv
+      - data/processed/split_metadata.json

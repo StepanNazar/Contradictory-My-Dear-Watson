@@ -1,0 +1,75 @@
+schema: '2.0'
+stages:
+  validate_data:
+    cmd: uv run python scripts/validate_data.py --config configs/data_split.yaml
+    deps:
+    - path: configs/data_split.yaml
+      hash: md5
+      md5: d51f5d3b96932e641129cb947f373158
+      size: 501
+    - path: data/raw/sample_submission.csv
+      hash: md5
+      md5: 9eff773539830b2f8fc5c0b819672b2e
+      size: 67549
+    - path: data/raw/test.csv
+      hash: md5
+      md5: 3c136eb1169a76741e2f5b9beec9d43e
+      size: 1180141
+    - path: data/raw/train.csv
+      hash: md5
+      md5: 8d12b46307ffd693c00ebf4d680686ae
+      size: 2771659
+    - path: scripts/validate_data.py
+      hash: md5
+      md5: d54282c66d9320b5c8ad3f48a050eca7
+      size: 2709
+    outs:
+    - path: data/processed/data_validation.json
+      hash: md5
+      md5: e4253511a9cd7158eca33e5a7778ceaa
+      size: 288
+  prepare_splits:
+    cmd: uv run python scripts/prepare_splits.py --config 
+      configs/data_split.yaml
+    deps:
+    - path: configs/data_split.yaml
+      hash: md5
+      md5: d51f5d3b96932e641129cb947f373158
+      size: 501
+    - path: data/processed/data_validation.json
+      hash: md5
+      md5: e4253511a9cd7158eca33e5a7778ceaa
+      size: 288
+    - path: data/raw/sample_submission.csv
+      hash: md5
+      md5: 9eff773539830b2f8fc5c0b819672b2e
+      size: 67549
+    - path: data/raw/test.csv
+      hash: md5
+      md5: 3c136eb1169a76741e2f5b9beec9d43e
+      size: 1180141
+    - path: data/raw/train.csv
+      hash: md5
+      md5: 8d12b46307ffd693c00ebf4d680686ae
+      size: 2771659
+    - path: scripts/prepare_splits.py
+      hash: md5
+      md5: a05ca23c8967f913d07fe7138ef9f8b7
+      size: 1736
+    outs:
+    - path: data/processed/kaggle_test.csv
+      hash: md5
+      md5: 3c136eb1169a76741e2f5b9beec9d43e
+      size: 1180141
+    - path: data/processed/split_metadata.json
+      hash: md5
+      md5: 430cf8b8f3a5bd71f768f894aab9db3a
+      size: 174
+    - path: data/processed/train_split.csv
+      hash: md5
+      md5: 95bdbffe8d5b8efb2f2704a7127d32d2
+      size: 2205684
+    - path: data/processed/val_split.csv
+      hash: md5
+      md5: c5bb1e7fd2a70e4f2f9821a356e21c8d
+      size: 566021

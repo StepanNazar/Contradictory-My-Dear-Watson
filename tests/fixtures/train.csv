@@ -1,0 +1,13 @@
+id,premise,hypothesis,language,lang_abv,label
+1,A man is playing guitar.,A person is making music.,English,en,0
+2,A woman is reading a book.,A woman is sleeping.,English,en,2
+3,Children are outside.,Kids are outdoors.,English,en,0
+4,The cat is on the mat.,There is no animal on the mat.,English,en,2
+5,Un homme mange.,A man is eating.,French,fr,0
+6,Une fille court.,A girl is not moving.,French,fr,2
+7,A dog is running.,An animal is moving.,English,en,0
+8,People are sitting.,People are standing.,English,en,2
+9,A car is parked.,A vehicle is outside.,English,en,0
+10,The room is empty.,There are people in the room.,English,en,2
+11,A person is cooking.,Someone prepares food.,English,en,0
+12,The lights are off.,The lights are on.,English,en,2
