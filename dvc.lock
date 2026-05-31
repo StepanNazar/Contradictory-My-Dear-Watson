@@ -73,3 +73,52 @@ stages:
       hash: md5
       md5: c5bb1e7fd2a70e4f2f9821a356e21c8d
       size: 566021
+  generate_embeddings:
+    cmd: uv run python scripts/generate_embeddings.py --config 
+      configs/data_split.yaml
+    deps:
+    - path: configs/data_split.yaml
+      hash: md5
+      md5: d51f5d3b96932e641129cb947f373158
+      size: 501
+    - path: data/processed/kaggle_test.csv
+      hash: md5
+      md5: 3c136eb1169a76741e2f5b9beec9d43e
+      size: 1180141
+    - path: data/processed/train_split.csv
+      hash: md5
+      md5: 95bdbffe8d5b8efb2f2704a7127d32d2
+      size: 2205684
+    - path: data/processed/val_split.csv
+      hash: md5
+      md5: c5bb1e7fd2a70e4f2f9821a356e21c8d
+      size: 566021
+    - path: scripts/generate_embeddings.py
+      hash: md5
+      md5: aaac4af579a5cbd714c1202024215193
+      size: 2207
+    outs:
+    - path: embeddings/e5/test_hypothesis.npy
+      hash: md5
+      md5: e9dfdb13b561e1c420e52c9f6880d463
+      size: 7979648
+    - path: embeddings/e5/test_premise.npy
+      hash: md5
+      md5: b9c21ac708bb3de9c024fe5ef26562ca
+      size: 7979648
+    - path: embeddings/e5/train_hypothesis.npy
+      hash: md5
+      md5: fde55cecc7bac16a6c64a50513fefdf5
+      size: 14893184
+    - path: embeddings/e5/train_premise.npy
+      hash: md5
+      md5: 3a552697b7b64ea7753ace97e531a21b
+      size: 14893184
+    - path: embeddings/e5/val_hypothesis.npy
+      hash: md5
+      md5: f7518e2477ddfb5216f4de4b4e5afac4
+      size: 3723392
+    - path: embeddings/e5/val_premise.npy
+      hash: md5
+      md5: c93bc8bfd2741e68406b825655422904
+      size: 3723392

@@ -1,0 +1,6 @@
+/train_premise.npy
+/train_hypothesis.npy
+/val_premise.npy
+/val_hypothesis.npy
+/test_premise.npy
+/test_hypothesis.npy

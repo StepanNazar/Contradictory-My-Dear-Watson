@@ -24,3 +24,19 @@ stages:
       - data/processed/val_split.csv
       - data/processed/kaggle_test.csv
       - data/processed/split_metadata.json
+
+  generate_embeddings:
+    cmd: uv run python scripts/generate_embeddings.py --config configs/data_split.yaml
+    deps:
+      - configs/data_split.yaml
+      - scripts/generate_embeddings.py
+      - data/processed/train_split.csv
+      - data/processed/val_split.csv
+      - data/processed/kaggle_test.csv
+    outs:
+      - embeddings/e5/train_premise.npy
+      - embeddings/e5/train_hypothesis.npy
+      - embeddings/e5/val_premise.npy
+      - embeddings/e5/val_hypothesis.npy
+      - embeddings/e5/test_premise.npy
+      - embeddings/e5/test_hypothesis.npy
