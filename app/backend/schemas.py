@@ -15,6 +15,22 @@ class PredictionResponse(BaseModel):
     probabilities: dict[str, float] | None = None
 
 
+class ContradictionRequest(BaseModel):
+    text: str = Field(min_length=1)
+    language: str = Field(min_length=2, max_length=10)
+
+
+class ContradictionMatch(BaseModel):
+    premise: str
+    hypothesis: str
+    probability: float
+
+
+class ContradictionResponse(BaseModel):
+    contradictions: list[ContradictionMatch]
+    total_pairs_checked: int
+
+
 class HealthResponse(BaseModel):
     status: str
     model_loaded: bool
