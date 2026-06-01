@@ -25,6 +25,9 @@ document.getElementById('predict-btn').addEventListener('click', async () => {
         return;
     }
 
+    // Hide previous result and show loading state if desired (optional)
+    resultCard.classList.add('hidden');
+
     try {
         const response = await fetch('/predict', {
             method: 'POST',
@@ -62,12 +65,13 @@ document.getElementById('detect-btn').addEventListener('click', async () => {
     const language = document.getElementById('lang-batch').value;
     const resultCard = document.getElementById('contradiction-result');
     const matchesList = document.getElementById('matches-list');
-    const totalInfo = document.getElementById('total-checked');
 
     if (!text) {
         alert("Please enter some text.");
         return;
     }
+
+    resultCard.classList.add('hidden');
 
     try {
         const response = await fetch('/detect-contradictions', {
@@ -78,7 +82,6 @@ document.getElementById('detect-btn').addEventListener('click', async () => {
 
         const data = await response.json();
         
-        totalInfo.innerText = `Checked ${data.total_pairs_checked} sentence combinations.`;
         matchesList.innerHTML = '';
         
         if (data.contradictions.length === 0) {
