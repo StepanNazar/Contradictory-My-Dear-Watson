@@ -4,11 +4,12 @@ FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim AS builder
 WORKDIR /app
 
 # Install production dependencies only
-COPY pyproject.toml uv.lock ./
+COPY pyproject.toml uv.lock README.md ./
 RUN uv sync --frozen --no-dev --extra-index-url https://download.pytorch.org/whl/cpu
 
-# Download SentenceTransformer model during build to bake it into the image
-RUN uv run python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('intfloat/multilingual-e5-small')"
+# Download SentenceTransformer model and NLTK data during build
+RUN uv run --no-project python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('intfloat/multilingual-e5-small')"
+RUN uv run --no-project python -m nltk.downloader punkt punkt_tab
 
 # Final stage
 FROM python:3.12-slim-bookworm

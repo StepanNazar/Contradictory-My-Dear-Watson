@@ -42,17 +42,30 @@ Azure CLI can handle ACR creation and image pushing in one go (or separately).
    ```
 
 ## Step 4: Deploy to Azure Container Apps
-Deploy the image from ACR to a Container App with 4GB RAM.
+Deploy the image from ACR to a Container App. 
 
-```bash
-az containerapp up \
-  --name $APP_NAME \
-  --resource-group $RESOURCE_GROUP \
-  --image $ACR_NAME.azurecr.io/watson-nli:latest \
-  --target-port 8000 \
-  --ingress external \
-  --cpu 1.0 --memory 4Gi
-```
+*Note: For 4GiB memory, Azure requires a specific CPU ratio (2.0 cores).*
+
+1. **Create Container Apps Environment**:
+   ```bash
+   az containerapp env create \
+     --name watson-env \
+     --resource-group $RESOURCE_GROUP \
+     --location $LOCATION
+   ```
+
+2. **Create the Container App**:
+   ```bash
+   az containerapp create \
+     --name $APP_NAME \
+     --resource-group $RESOURCE_GROUP \
+     --environment watson-env \
+     --image $ACR_NAME.azurecr.io/watson-nli:latest \
+     --target-port 8000 \
+     --ingress external \
+     --registry-server $ACR_NAME.azurecr.io \
+     --cpu 2.0 --memory 4.0Gi
+   ```
 
 ## Step 5: Verify Deployment
 Once the command completes, it will provide an FQDN (URL).

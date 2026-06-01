@@ -34,8 +34,10 @@ class PredictionService:
         # Download NLTK data
         try:
             nltk.data.find('tokenizers/punkt')
+            nltk.data.find('tokenizers/punkt_tab')
         except LookupError:
             nltk.download('punkt')
+            nltk.download('punkt_tab')
             
         self.reload()
 
