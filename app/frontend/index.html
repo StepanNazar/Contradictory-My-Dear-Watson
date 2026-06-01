@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NLI: Contradictory My Dear Watson</title>
+    <link rel="stylesheet" href="/ui/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 NLI Analysis Tool</h1>
+            <p>Multilingual Natural Language Inference & Contradiction Detection</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="openTab(event, 'nli-single')">Single Prediction</button>
+            <button class="tab-btn" onclick="openTab(event, 'contradiction-batch')">Text Contradictions</button>
+        </div>
+
+        <!-- Single Prediction Tab -->
+        <div id="nli-single" class="tab-content active">
+            <div class="card">
+                <div class="form-group">
+                    <label for="lang-select">Language:</label>
+                    <select id="lang-select">
+                        <option value="en">English (en)</option>
+                        <option value="ar">Arabic (ar)</option>
+                        <option value="sw">Swahili (sw)</option>
+                        <option value="th">Thai (th)</option>
+                        <option value="vi">Vietnamese (vi)</option>
+                        <option value="es">Spanish (es)</option>
+                        <option value="bg">Bulgarian (bg)</option>
+                        <option value="zh">Chinese (zh)</option>
+                        <option value="ur">Urdu (ur)</option>
+                        <option value="ru">Russian (ru)</option>
+                        <option value="hi">Hindi (hi)</option>
+                        <option value="fr">French (fr)</option>
+                        <option value="tr">Turkish (tr)</option>
+                        <option value="el">Greek (el)</option>
+                        <option value="de">German (de)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="premise">Premise:</label>
+                    <textarea id="premise" placeholder="Enter the base statement..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="hypothesis">Hypothesis:</label>
+                    <textarea id="hypothesis" placeholder="Enter the statement to test..."></textarea>
+                </div>
+                <button id="predict-btn" class="primary-btn">Analyze Pair</button>
+            </div>
+            
+            <div id="prediction-result" class="result-card hidden">
+                <h3>Result: <span id="label-result"></span></h3>
+                <div class="probs-container" id="probs-container"></div>
+            </div>
+        </div>
+
+        <!-- Contradiction Detection Tab -->
+        <div id="contradiction-batch" class="tab-content">
+            <div class="card">
+                <div class="form-group">
+                    <label for="lang-batch">Language:</label>
+                    <select id="lang-batch">
+                        <option value="en">English (en)</option>
+                        <option value="ar">Arabic (ar)</option>
+                        <option value="sw">Swahili (sw)</option>
+                        <option value="th">Thai (th)</option>
+                        <option value="vi">Vietnamese (vi)</option>
+                        <option value="es">Spanish (es)</option>
+                        <option value="bg">Bulgarian (bg)</option>
+                        <option value="zh">Chinese (zh)</option>
+                        <option value="ur">Urdu (ur)</option>
+                        <option value="ru">Russian (ru)</option>
+                        <option value="hi">Hindi (hi)</option>
+                        <option value="fr">French (fr)</option>
+                        <option value="tr">Turkish (tr)</option>
+                        <option value="el">Greek (el)</option>
+                        <option value="de">German (de)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="bulk-text">Text for Analysis:</label>
+                    <textarea id="bulk-text" rows="8" placeholder="Enter a long text to find internal contradictions..."></textarea>
+                </div>
+                <button id="detect-btn" class="primary-btn">Find Contradictions</button>
+            </div>
+
+            <div id="contradiction-result" class="result-card hidden">
+                <h3>Detected Contradictions</h3>
+                <div id="matches-list"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by Stacked Ensemble Model (intfloat/multilingual-e5-small -> (XGB + LGBM + SVM) -> XGB meta model)</p>
+        </footer>
+    </div>
+    <script src="/ui/app.js"></script>
+</body>
+</html>

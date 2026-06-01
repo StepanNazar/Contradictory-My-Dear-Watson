@@ -637,22 +637,16 @@ name = "contradictory-my-dear-watson"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "dvc", extra = ["s3"] },
     { name = "fastapi" },
-    { name = "gensim" },
     { name = "joblib" },
     { name = "lightgbm" },
-    { name = "mlflow" },
-    { name = "optuna" },
     { name = "nltk" },
     { name = "pandas" },
     { name = "python-dotenv" },
     { name = "pyyaml" },
     { name = "scikit-learn" },
     { name = "scipy" },
-    { name = "seaborn" },
     { name = "sentence-transformers" },
-    { name = "simplemma" },
     { name = "torch" },
     { name = "uvicorn", extra = ["standard"] },
     { name = "xgboost" },
@@ -660,29 +654,29 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "dvc", extra = ["s3"] },
+    { name = "gensim" },
     { name = "ipykernel" },
+    { name = "mlflow" },
     { name = "nbstripout" },
+    { name = "optuna" },
     { name = "pytest" },
+    { name = "seaborn" },
+    { name = "simplemma" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "dvc", extras = ["s3"], specifier = ">=3.59.0" },
     { name = "fastapi", specifier = ">=0.115.0" },
-    { name = "gensim", specifier = ">=4.4.0" },
     { name = "joblib", specifier = ">=1.4.2" },
     { name = "lightgbm", specifier = ">=4.6.0" },
-    { name = "mlflow", specifier = ">=2.17.0" },
-    { name = "optuna", specifier = ">=4.8.0" },
     { name = "nltk", specifier = ">=3.9.1" },
     { name = "pandas", specifier = ">=2.2.3" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
     { name = "pyyaml", specifier = ">=6.0.2" },
     { name = "scikit-learn", specifier = ">=1.5.2" },
     { name = "scipy", specifier = ">=1.14.1" },
-    { name = "seaborn", specifier = ">=0.13.2" },
     { name = "sentence-transformers", specifier = ">=5.5.1" },
-    { name = "simplemma", specifier = ">=1.1.2" },
     { name = "torch", specifier = ">=2.12.0" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.32.0" },
     { name = "xgboost", specifier = ">=2.1.0" },
@@ -690,9 +684,15 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "dvc", extras = ["s3"], specifier = ">=3.59.0" },
+    { name = "gensim", specifier = ">=4.4.0" },
     { name = "ipykernel", specifier = ">=6.29.5" },
+    { name = "mlflow", specifier = ">=2.17.0" },
     { name = "nbstripout", specifier = ">=0.7.1" },
+    { name = "optuna", specifier = ">=4.8.0" },
     { name = "pytest", specifier = ">=8.3.3" },
+    { name = "seaborn", specifier = ">=0.13.2" },
+    { name = "simplemma", specifier = ">=1.1.2" },
 ]
 
 [[package]]
