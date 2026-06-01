@@ -95,22 +95,6 @@ Kaggle final submission is done through a Kaggle notebook/code submission, not b
    ```
    Open `http://localhost:8000` to access the UI.
 
-## Serve A Promoted Model (Legacy)
-
-Pick a run in MLflow and promote it:
-
-```bash
-uv run python scripts/promote_model.py --run-id <mlflow_run_id>
-```
-
-Start API:
-
-```bash
-docker compose up --build api
-```
-
-FastAPI currently serves the baseline `sklearn_text_pair_vectorizer` package. Other model packages can be logged/promoted, but need a matching loader in `app/backend/service.py`.
-
 ## Deployment
 Detailed instructions for deploying to Azure Container Apps can be found in [docs/deployment.md](docs/deployment.md).
 
